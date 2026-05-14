@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comité Abril — Servicio al Cliente | Numaris</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f2a4a;
+    --blue: #1a5fa8;
+    --sky: #4fa3d1;
+    --accent: #f0a500;
+    --green: #2db67d;
+    --orange: #f07030;
+    --red: #e05050;
+    --light: #f5f8fc;
+    --white: #ffffff;
+    --gray: #8a9ab5;
+    --border: #dde6f0;
+    --card-shadow: 0 4px 24px rgba(15,42,74,0.08);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--light); color: var(--navy); overflow-x: hidden; }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 64px;
+  }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--navy); letter-spacing: -0.5px; }
+  .nav-logo span { color: var(--blue); }
+  .nav-links { display: flex; gap: 4px; list-style: none; }
+  .nav-links a { text-decoration: none; font-size: 0.82rem; font-weight: 500; color: var(--gray); padding: 6px 12px; border-radius: 20px; transition: all 0.2s; cursor: pointer; }
+  .nav-links a:hover, .nav-links a.active { color: var(--blue); background: rgba(26,95,168,0.08); }
+  section { display: none; min-height: 100vh; padding: 96px 40px 80px; animation: fadeUp 0.5s ease forwards; }
+  section.active { display: block; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  .hero { background: linear-gradient(135deg, #e8f1fb 0%, #f5f8fc 60%, #eef6ff 100%); display: flex !important; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -80px; right: -80px; width: 480px; height: 480px; background: radial-gradient(circle, rgba(79,163,209,0.15) 0%, transparent 70%); border-radius: 50%; }
+  .hero-badge { display: inline-block; background: rgba(26,95,168,0.1); color: var(--blue); font-size: 0.78rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 24px; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 700; line-height: 1.15; color: var(--navy); max-width: 700px; margin-bottom: 16px; }
+  .hero h1 em { font-style: normal; color: var(--blue); }
+  .hero p { font-size: 1.05rem; color: var(--gray); max-width: 500px; line-height: 1.7; margin-bottom: 40px; }
+  .hero-stats { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 2; }
+  .stat-card { background: var(--white); border-radius: 16px; padding: 24px 28px; box-shadow: var(--card-shadow); text-align: center; border: 1px solid var(--border); min-width: 130px; transition: transform 0.2s; }
+  .stat-card:hover { transform: translateY(-4px); }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: var(--blue); line-height: 1; }
+  .stat-label { font-size: 0.75rem; color: var(--gray); font-weight: 500; margin-top: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .section-header { margin-bottom: 36px; }
+  .section-tag { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--blue); margin-bottom: 8px; }
+  .section-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 700; color: var(--navy); }
+  .impl-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; }
+  .impl-card { background: var(--white); border-radius: 16px; padding: 22px; border: 1px solid var(--border); box-shadow: var(--card-shadow); transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
+  .impl-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(15,42,74,0.12); }
+  .impl-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; border-radius: 4px 0 0 4px; }
+  .impl-card.yellow::before { background: #f5c842; }
+  .impl-card.orange::before { background: var(--orange); }
+  .impl-card.green::before { background: var(--green); }
+  .impl-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; gap: 10px; }
+  .impl-name { font-weight: 600; font-size: 1rem; color: var(--navy); line-height: 1.3; }
+  .impl-units { background: var(--light); border-radius: 8px; padding: 4px 10px; font-size: 0.8rem; font-weight: 600; color: var(--blue); white-space: nowrap; flex-shrink: 0; }
+  .impl-type { display: inline-block; font-size: 0.72rem; font-weight: 500; background: rgba(26,95,168,0.08); color: var(--blue); padding: 3px 10px; border-radius: 12px; margin-bottom: 8px; }
+  .impl-note { font-size: 0.83rem; color: var(--gray); line-height: 1.6; margin-top: 8px; border-top: 1px solid var(--border); padding-top: 8px; }
+  .status-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 0.7rem; font-weight: 600; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px; }
+  .status-pill::before { content: ''; width: 7px; height: 7px; border-radius: 50%; }
+  .status-pill.arranque { background: #fff9e6; color: #b07d00; }
+  .status-pill.arranque::before { background: #f5c842; }
+  .status-pill.curso { background: #fff2eb; color: #a04000; }
+  .status-pill.curso::before { background: var(--orange); }
+  .status-pill.seguimiento { background: #eafaf3; color: #1a7a4a; }
+  .status-pill.seguimiento::before { background: var(--green); }
+  .step-label { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--gray); margin: 28px 0 12px; }
+  .metrics-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 18px; margin-bottom: 32px; }
+  .metric-box { background: var(--white); border-radius: 16px; padding: 24px; border: 1px solid var(--border); box-shadow: var(--card-shadow); text-align: center; }
+  .metric-val { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--blue); }
+  .metric-label { font-size: 0.78rem; color: var(--gray); margin-top: 4px; font-weight: 500; }
+  .highlight-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+  .highlight-card { background: var(--white); border-radius: 16px; padding: 26px; border: 1px solid var(--border); box-shadow: var(--card-shadow); }
+  .highlight-icon { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 14px; }
+  .highlight-card h3 { font-size: 0.93rem; font-weight: 600; color: var(--navy); margin-bottom: 8px; line-height: 1.4; }
+  .highlight-card p { font-size: 0.83rem; color: var(--gray); line-height: 1.7; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } }
+  .list-card { background: var(--white); border-radius: 16px; padding: 24px; border: 1px solid var(--border); box-shadow: var(--card-shadow); }
+  .list-card h3 { font-size: 0.88rem; font-weight: 600; color: var(--navy); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+  .list-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+  .list-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); margin-top: 6px; flex-shrink: 0; }
+  .list-item p { font-size: 0.86rem; color: #4a5568; line-height: 1.6; }
+  .list-item strong { color: var(--navy); }
+  .req-card { background: var(--white); border-radius: 16px; padding: 24px; border: 1px solid var(--border); box-shadow: var(--card-shadow); margin-bottom: 14px; display: flex; align-items: flex-start; gap: 18px; }
+  .req-status { flex-shrink: 0; background: var(--green); color: white; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 5px 12px; border-radius: 20px; margin-top: 4px; }
+  .req-info h3 { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+  .req-info p { font-size: 0.83rem; color: var(--gray); line-height: 1.6; }
+  .req-client { font-size: 0.76rem; color: var(--blue); font-weight: 500; margin-top: 6px; }
+  .proposals-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+  .proposal-card { background: var(--white); border-radius: 14px; padding: 20px; border: 1px solid var(--border); box-shadow: var(--card-shadow); transition: transform 0.2s; }
+  .proposal-card:hover { transform: translateY(-3px); }
+  .proposal-badge { font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 3px 10px; border-radius: 12px; margin-bottom: 10px; display: inline-block; }
+  .badge-numaris { background: #e8f0fe; color: #1a5fa8; }
+  .badge-chg { background: #f0fdf4; color: #166534; }
+  .badge-growth { background: #fff7ed; color: #9a3412; }
+  .proposal-name { font-size: 0.97rem; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+  .proposal-desc { font-size: 0.82rem; color: var(--gray); line-height: 1.5; }
+  .comm-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; }
+  .comm-card { background: var(--white); border-radius: 16px; padding: 24px; border: 1px solid var(--border); box-shadow: var(--card-shadow); text-align: center; }
+  .comm-emoji { font-size: 2rem; margin-bottom: 12px; }
+  .comm-card h3 { font-size: 0.92rem; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .comm-card p { font-size: 0.82rem; color: var(--gray); line-height: 1.6; }
+  .bottom-nav { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 7px; background: rgba(255,255,255,0.92); backdrop-filter: blur(10px); padding: 9px 14px; border-radius: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border: 1px solid var(--border); z-index: 99; }
+  .bottom-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); cursor: pointer; transition: all 0.3s; }
+  .bottom-dot.active { background: var(--blue); width: 22px; border-radius: 4px; }
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  @media (max-width: 600px) {
+    nav { padding: 0 16px; }
+    .nav-links { display: none; }
+    section { padding: 80px 16px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">N<span>umaris</span></div>
+  <ul class="nav-links">
+    <li><a class="active" onclick="showSection('home',this)">Inicio</a></li>
+    <li><a onclick="showSection('impl',this)">Implementaciones</a></li>
+    <li><a onclick="showSection('gestion',this)">Gestorías</a></li>
+    <li><a onclick="showSection('experiencia',this)">Experiencia</a></li>
+    <li><a onclick="showSection('clientes',this)">Crecimiento</a></li>
+    <li><a onclick="showSection('comms',this)">Comunicación</a></li>
+  </ul>
+</nav>
+
+<section id="home" class="hero active">
+  <div class="hero-badge">Comité Mensual · Abril 2025</div>
+  <h1>Servicio al <em>Cliente</em></h1>
+  <p>Resumen ejecutivo del mes de Abril: implementaciones, gestorías, mejora de experiencia y comunicación con clientes.</p>
+  <div class="hero-stats">
+    <div class="stat-card"><div class="stat-num">12+</div><div class="stat-label">Clientes activos</div></div>
+    <div class="stat-card"><div class="stat-num">106</div><div class="stat-label">Gestorías en el mes</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:var(--green)">$550K</div><div class="stat-label">Facturación gestorías</div></div>
+    <div class="stat-card"><div class="stat-num">2</div><div class="stat-label">Requisitos entregados</div></div>
+  </div>
+</section>
+
+<section id="impl">
+  <div class="section-header">
+    <div class="section-tag">Mes de Abril</div>
+    <h2>Implementaciones</h2>
+  </div>
+  <p class="step-label reveal">🟡 En arranque — Solicitud / Revisión de información</p>
+  <div class="impl-grid">
+    <div class="impl-card yellow reveal"><div class="status-pill arranque">En arranque</div><div class="impl-header"><div class="impl-name">Banorte Seguros</div><div class="impl-units">108 unidades</div></div><div class="impl-type">Gestión de mantenimiento</div></div>
+    <div class="impl-card yellow reveal"><div class="status-pill arranque">En arranque</div><div class="impl-header"><div class="impl-name">Transportes Nidima <small style="color:var(--red)">(Baja)</small></div><div class="impl-units">6 unidades</div></div><div class="impl-type">Digital</div><div class="impl-note">Baja por falta de respuesta del cliente.</div></div>
+    <div class="impl-card yellow reveal"><div class="status-pill arranque">En arranque</div><div class="impl-header"><div class="impl-name">GALEAM</div><div class="impl-units">28 unidades</div></div><div class="impl-type">Digital</div></div>
+    <div class="impl-card yellow reveal"><div class="status-pill arranque">En arranque</div><div class="impl-header"><div class="impl-name">RAGASA</div><div class="impl-units">158 nuevas / 71 gestión</div></div><div class="impl-type">Gestión de mantenimiento</div><div class="impl-note">Bloque 2,3,4. Unidades nuevas: 158. Para gestión: 71.</div></div>
+    <div class="impl-card yellow reveal"><div class="status-pill arranque">En arranque</div><div class="impl-header"><div class="impl-name">Pumping Team</div><div class="impl-units">600 unidades</div></div><div class="impl-type">Digital</div></div>
+  </div>
+  <p class="step-label reveal" style="margin-top:36px">🟠 En curso — Capacitaciones</p>
+  <div class="impl-grid">
+    <div class="impl-card orange reveal"><div class="status-pill curso">En curso</div><div class="impl-header"><div class="impl-name">Conecta Bee</div><div class="impl-units">145 unidades</div></div><div class="impl-type">Digital</div><div class="impl-note">Por finalizar capacitaciones con usuarios conductores.</div></div>
+    <div class="impl-card orange reveal"><div class="status-pill curso">En curso</div><div class="impl-header"><div class="impl-name">Grupo Continental</div><div class="impl-units">68 unidades</div></div><div class="impl-type">Gestión de mantenimiento</div><div class="impl-note">Capacitaciones terminadas. Arranque formal el 21 de mayo.</div></div>
+    <div class="impl-card orange reveal"><div class="status-pill curso">En curso</div><div class="impl-header"><div class="impl-name">Fanafesa</div><div class="impl-units">884 unidades</div></div><div class="impl-type">Digital</div><div class="impl-note">Módulo Presupuesto Flexible concluido. Pendiente capacitación al usuario.</div></div>
+    <div class="impl-card orange reveal"><div class="status-pill curso">En curso</div><div class="impl-header"><div class="impl-name">Volkswagen</div><div class="impl-units">26–85 unidades</div></div><div class="impl-type">Gestión de mantenimientos</div><div class="impl-note">Pendiente capacitación conductores y coordinación con Easytrack. Tríptico de recomendaciones pendiente.</div></div>
+    <div class="impl-card orange reveal"><div class="status-pill curso">En curso</div><div class="impl-header"><div class="impl-name">Sale Vale</div><div class="impl-units">194 unidades</div></div><div class="impl-type">Gestión de mantenimiento</div><div class="impl-note">En proceso de capacitaciones (licencia Acofleet).</div></div>
+  </div>
+  <p class="step-label reveal" style="margin-top:36px">🟢 Sesiones de seguimiento</p>
+  <div class="impl-grid">
+    <div class="impl-card green reveal"><div class="status-pill seguimiento">Seguimiento</div><div class="impl-header"><div class="impl-name">Alsea</div><div class="impl-units">315 unidades</div></div><div class="impl-type">Gestión de mantenimientos</div><div class="impl-note">Flota total cargada. Accesos compartidos a unidades ejecutivas.</div></div>
+    <div class="impl-card green reveal"><div class="status-pill seguimiento">Seguimiento</div><div class="impl-header"><div class="impl-name">ABR Admin. y Hospitalidad</div><div class="impl-units">18 unidades</div></div><div class="impl-type">Gestión de mantenimientos</div><div class="impl-note">Ya solicitan servicios. Pendiente confirmación de trámites de gestoría.</div></div>
+    <div class="impl-card green reveal"><div class="status-pill seguimiento">Seguimiento</div><div class="impl-header"><div class="impl-name">Agua Óptima</div><div class="impl-units">37 unidades</div></div><div class="impl-type">Gestión de mantenimientos</div><div class="impl-note">Coordinación con Tecnocontrol y Oxxo Gas. Módulos de checklist y siniestros en refuerzo.</div></div>
+    <div class="impl-card green reveal"><div class="status-pill seguimiento">Seguimiento</div><div class="impl-header"><div class="impl-name">Grupo AMPM</div><div class="impl-units">1,672 unidades</div></div><div class="impl-type">Gestión de mantenimiento</div><div class="impl-note">Reporte de Gasto Consolidado liberado. Integración multi-cuenta con Edenred en proceso.</div></div>
+  </div>
+</section>
+
+<section id="gestion">
+  <div class="section-header"><div class="section-tag">Operación</div><h2>Gestorías</h2></div>
+  <div class="metrics-row">
+    <div class="metric-box reveal"><div class="metric-val">106</div><div class="metric-label">Solicitudes en el mes</div></div>
+    <div class="metric-box reveal"><div class="metric-val" style="color:var(--green)">$550,108</div><div class="metric-label">Facturación total MXN</div></div>
+    <div class="metric-box reveal"><div class="metric-val">3</div><div class="metric-label">Clientes con trámites</div></div>
+  </div>
+  <div style="margin-bottom:20px;font-size:0.84rem;color:var(--gray)">Clientes: <strong style="color:var(--navy)">CHG (Alsea y VW) &nbsp;·&nbsp; Jugos del Valle &nbsp;·&nbsp; URREA</strong></div>
+  <div class="highlight-cards">
+    <div class="highlight-card reveal"><div class="highlight-icon" style="background:#fff9e6">🗓️</div><h3>Gestión extraordinaria de tenencias — Jugos del Valle</h3><p>Aunque el periodo regular concluyó en marzo, se atendió exitosamente una solicitud adicional coordinando con Finanzas para garantizar cumplimiento operativo en tiempo.</p></div>
+    <div class="highlight-card reveal"><div class="highlight-icon" style="background:#eafaf3">🔄</div><h3>Renovación proactiva de tarjetas de circulación — URREA CDMX</h3><p>Se inició preventivamente la renovación antes de recibir solicitudes, anticipando vencimientos y reduciendo riesgos de incidencias en tránsito.</p></div>
+    <div class="highlight-card reveal"><div class="highlight-icon" style="background:#eef4ff">📋</div><h3>Asesoría estratégica de gestoría — ABR</h3><p>Acompañamiento consultivo para identificar oportunidades de regularización y orden administrativo de su flotilla.</p></div>
+    <div class="highlight-card reveal"><div class="highlight-icon" style="background:#fff2eb">🚀</div><h3>Desarrollo de negocio y expansión</h3><p>Alianza en consolidación con proveedor clave para venta cruzada y esquemas de financiamiento en trámites vehiculares.</p></div>
+  </div>
+</section>
+
+<section id="experiencia">
+  <div class="section-header"><div class="section-tag">Abril 2025</div><h2>Mejora de Experiencia</h2></div>
+  <div class="two-col">
+    <div class="list-card reveal"><h3>📤 Plan de Mantenimiento Enviado</h3>
+      <div class="list-item"><div class="list-dot"></div><p><strong>Grupo Pavisa</strong> (Arrendadora Coppel) — 32 unidades</p></div>
+      <div class="list-item"><div class="list-dot"></div><p><strong>Casofin</strong> (General)</p></div>
+      <div class="list-item"><div class="list-dot"></div><p><strong>Grupo Batta</strong></p></div>
+      <div class="list-item"><div class="list-dot"></div><p><strong>CSI</strong></p></div>
+      <div class="list-item"><div class="list-dot"></div><p><strong>GEM</strong></p></div>
+    </div>
+    <div class="list-card reveal"><h3>⚙️ Actividades realizadas</h3>
+      <div class="list-item"><div class="list-dot"></div><p>Capacitación de nuevas funcionalidades a clientes internos y externos</p></div>
+      <div class="list-item"><div class="list-dot"></div><p>Carga de unidades de <strong>Bafar</strong></p></div>
+      <div class="list-item"><div class="list-dot"></div><p>Ingreso de <strong>200 nuevas unidades</strong> de Coppel</p></div>
+      <div class="list-item"><div class="list-dot"></div><p>Carga de <strong>50 unidades nuevas</strong> de Batta</p></div>
+      <div class="list-item"><div class="list-dot"></div><p>Ajuste de cuota a la división Tiendas de Grupo Bafar</p></div>
+    </div>
+    <div class="list-card reveal"><h3>🤖 Automatizaciones e internos</h3>
+      <div class="list-item"><div class="list-dot"></div><p>Sesiones internas para establecer procesos con retrabajo</p></div>
+      <div class="list-item"><div class="list-dot"></div><p>Centralización de clientes en <strong>Zoho</strong>: layouts y workflows configurados</p></div>
+      <div class="list-item"><div class="list-dot"></div><p>Videos tutoriales para impulsar uso correcto de la plataforma</p></div>
+      <div class="list-item"><div class="list-dot"></div><p><strong>Envío masivo de accesos automatizado</strong></p></div>
+      <div class="list-item"><div class="list-dot"></div><p>Limpieza de catálogo vehicular en proceso</p></div>
+    </div>
+    <div class="list-card reveal"><h3>📊 Seguimiento y Trazabilidad</h3>
+      <div class="list-item"><div class="list-dot"></div><p>Recordatorios y sesiones mensuales con clientes establecidas</p></div>
+      <div class="list-item"><div class="list-dot"></div><p>Organización de pendientes mejorada con comunicación post-reunión</p></div>
+      <div class="list-item"><div class="list-dot"></div><p>Tablero de seguimiento y análisis de facturación creado con <strong>Claude</strong></p></div>
+    </div>
+  </div>
+  <div style="margin-top:32px"><div class="section-tag">Requerimientos</div><div style="height:10px"></div>
+    <div class="req-card reveal"><div class="req-status">Entregado</div><div class="req-info"><h3>Reporte de Gastos Consolidados</h3><p>Visualización del gasto acumulado de la flota por conceptos: mantenimiento, combustible, gestorías y pólizas de seguro.</p><div class="req-client">Cliente: Grupo AMPM</div></div></div>
+    <div class="req-card reveal"><div class="req-status">Entregado</div><div class="req-info"><h3>Creación de usuarios por migración masiva</h3><p>Carga masiva de usuarios mediante migración para facilitar la configuración inicial del sistema, sin necesidad de creación manual uno por uno.</p><div class="req-client">Necesidad interna — implementaciones</div></div></div>
+  </div>
+</section>
+
+<section id="clientes">
+  <div class="section-header"><div class="section-tag">Expansión</div><h2>Crecimiento con Clientes</h2></div>
+  <div class="proposals-grid">
+    <div class="proposal-card reveal"><div class="proposal-badge badge-growth">Crecemos con clientes</div><div class="proposal-name">Arrendadora AAG → PINFRA</div><div class="proposal-desc">Solicitud de propuesta del Plan Management para su cliente PINFRA.</div></div>
+    <div class="proposal-card reveal"><div class="proposal-badge badge-numaris">Clientes Numaris</div><div class="proposal-name">AMIFIN (Arrendadora)</div><div class="proposal-desc">Posible partner comercial. Propuesta en evaluación.</div></div>
+    <div class="proposal-card reveal"><div class="proposal-badge badge-chg">Clientes CHG</div><div class="proposal-name">IPS Digital</div><div class="proposal-desc">Propuesta: Gestión de mantenimientos + Póliza de gestorías.</div></div>
+    <div class="proposal-card reveal"><div class="proposal-badge badge-chg">Clientes CHG</div><div class="proposal-name">GENET</div><div class="proposal-desc">Propuesta: Gestión de mantenimientos + Póliza de gestorías.</div></div>
+  </div>
+</section>
+
+<section id="comms">
+  <div class="section-header"><div class="section-tag">Abril 2025</div><h2>Comunicación con Clientes</h2></div>
+  <div class="comm-grid">
+    <div class="comm-card reveal"><div class="comm-emoji">🪧</div><h3>Campaña de Gestorías</h3><p>Reemplacamientos en Tabasco. Comunicación activa con clientes en la región.</p></div>
+    <div class="comm-card reveal"><div class="comm-emoji">✉️</div><h3>Nuevas Funcionalidades</h3><p>Mail informativo de nuevas funcionalidades del último mes. Aviso sobre intermitencia del sistema por despliegue de roles y permisos.</p></div>
+    <div class="comm-card reveal"><div class="comm-emoji">🗓️</div><h3>Avisos de Servicio</h3><p>Aviso de día no laboral: <strong>1 de mayo</strong>. Gestión anticipada de expectativas.</p></div>
+    <div class="comm-card reveal"><div class="comm-emoji">⭐</div><h3>Campaña NPS — Gestión de Flotas</h3><p>Mail a contactos principales. Historias y recordatorios mediante WhatsApp para aumentar tasa de respuesta.</p></div>
+  </div>
+</section>
+
+<div class="bottom-nav" id="bottomNav">
+  <div class="bottom-dot active" onclick="showSectionByIndex(0)"></div>
+  <div class="bottom-dot" onclick="showSectionByIndex(1)"></div>
+  <div class="bottom-dot" onclick="showSectionByIndex(2)"></div>
+  <div class="bottom-dot" onclick="showSectionByIndex(3)"></div>
+  <div class="bottom-dot" onclick="showSectionByIndex(4)"></div>
+  <div class="bottom-dot" onclick="showSectionByIndex(5)"></div>
+</div>
+
+<script>
+  const sections = ['home','impl','gestion','experiencia','clientes','comms'];
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const dots = document.querySelectorAll('.bottom-dot');
+
+  function showSection(id, el) {
+    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    navLinks.forEach(a => a.classList.remove('active'));
+    if (el) el.classList.add('active');
+    const idx = sections.indexOf(id);
+    dots.forEach((d,i) => d.classList.toggle('active', i === idx));
+    window.scrollTo(0,0);
+    triggerReveal();
+  }
+
+  function showSectionByIndex(i) {
+    showSection(sections[i], navLinks[i]);
+  }
+
+  function triggerReveal() {
+    setTimeout(() => {
+      const active = document.querySelector('section.active');
+      active.querySelectorAll('.reveal').forEach((el, i) => {
+        setTimeout(() => el.classList.add('visible'), i * 55);
+      });
+    }, 80);
+  }
+  triggerReveal();
+</script>
+</body>
+</html>
