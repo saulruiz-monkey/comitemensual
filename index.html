@@ -21,10 +21,11 @@
     --card-shadow: 0 4px 24px rgba(15,42,74,0.08);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body { font-family: 'DM Sans', sans-serif; background: var(--light); color: var(--navy); overflow-x: hidden; }
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
+    background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 40px; height: 64px;
@@ -32,12 +33,17 @@
   .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--navy); letter-spacing: -0.5px; }
   .nav-logo span { color: var(--blue); }
   .nav-links { display: flex; gap: 4px; list-style: none; }
-  .nav-links a { text-decoration: none; font-size: 0.82rem; font-weight: 500; color: var(--gray); padding: 6px 12px; border-radius: 20px; transition: all 0.2s; cursor: pointer; }
-  .nav-links a:hover, .nav-links a.active { color: var(--blue); background: rgba(26,95,168,0.08); }
-  section { display: none; min-height: 100vh; padding: 96px 40px 80px; animation: fadeUp 0.5s ease forwards; }
-  section.active { display: block; }
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-  .hero { background: linear-gradient(135deg, #e8f1fb 0%, #f5f8fc 60%, #eef6ff 100%); display: flex !important; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; }
+  .nav-links a {
+    text-decoration: none; font-size: 0.82rem; font-weight: 500; color: var(--gray);
+    padding: 6px 12px; border-radius: 20px; transition: all 0.25s; cursor: pointer;
+  }
+  .nav-links a:hover { color: var(--blue); background: rgba(26,95,168,0.08); }
+  .nav-links a.active {
+    color: var(--white); background: var(--navy);
+    font-weight: 600;
+  }
+  section { display: block; min-height: 100vh; padding: 100px 40px 80px; }
+  .hero { background: linear-gradient(135deg, #e8f1fb 0%, #f5f8fc 60%, #eef6ff 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; }
   .hero::before { content: ''; position: absolute; top: -80px; right: -80px; width: 480px; height: 480px; background: radial-gradient(circle, rgba(79,163,209,0.15) 0%, transparent 70%); border-radius: 50%; }
   .hero-badge { display: inline-block; background: rgba(26,95,168,0.1); color: var(--blue); font-size: 0.78rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 24px; }
   .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 700; line-height: 1.15; color: var(--navy); max-width: 700px; margin-bottom: 16px; }
@@ -108,15 +114,12 @@
   .comm-emoji { font-size: 2rem; margin-bottom: 12px; }
   .comm-card h3 { font-size: 0.92rem; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
   .comm-card p { font-size: 0.82rem; color: var(--gray); line-height: 1.6; }
-  .bottom-nav { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 7px; background: rgba(255,255,255,0.92); backdrop-filter: blur(10px); padding: 9px 14px; border-radius: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border: 1px solid var(--border); z-index: 99; }
-  .bottom-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); cursor: pointer; transition: all 0.3s; }
-  .bottom-dot.active { background: var(--blue); width: 22px; border-radius: 4px; }
-  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
   @media (max-width: 600px) {
     nav { padding: 0 16px; }
     .nav-links { display: none; }
-    section { padding: 80px 16px 80px; }
+    section { padding: 80px 16px 60px; }
   }
 </style>
 </head>
@@ -125,16 +128,16 @@
 <nav>
   <div class="nav-logo">N<span>umaris</span></div>
   <ul class="nav-links">
-    <li><a class="active" onclick="showSection('home',this)">Inicio</a></li>
-    <li><a onclick="showSection('impl',this)">Implementaciones</a></li>
-    <li><a onclick="showSection('gestion',this)">Gestorías</a></li>
-    <li><a onclick="showSection('experiencia',this)">Experiencia</a></li>
-    <li><a onclick="showSection('clientes',this)">Crecimiento</a></li>
-    <li><a onclick="showSection('comms',this)">Comunicación</a></li>
+    <li><a>Inicio</a></li>
+    <li><a>Implementaciones</a></li>
+    <li><a>Gestorías</a></li>
+    <li><a>Experiencia</a></li>
+    <li><a>Crecimiento</a></li>
+    <li><a>Comunicación</a></li>
   </ul>
 </nav>
 
-<section id="home" class="hero active">
+<section id="home" class="hero">
   <div class="hero-badge">Comité Mensual · Abril 2025</div>
   <h1>Servicio al <em>Cliente</em></h1>
   <p>Resumen ejecutivo del mes de Abril: implementaciones, gestorías, mejora de experiencia y comunicación con clientes.</p>
@@ -248,44 +251,49 @@
   </div>
 </section>
 
-<div class="bottom-nav" id="bottomNav">
-  <div class="bottom-dot active" onclick="showSectionByIndex(0)"></div>
-  <div class="bottom-dot" onclick="showSectionByIndex(1)"></div>
-  <div class="bottom-dot" onclick="showSectionByIndex(2)"></div>
-  <div class="bottom-dot" onclick="showSectionByIndex(3)"></div>
-  <div class="bottom-dot" onclick="showSectionByIndex(4)"></div>
-  <div class="bottom-dot" onclick="showSectionByIndex(5)"></div>
-</div>
 
 <script>
   const sections = ['home','impl','gestion','experiencia','clientes','comms'];
   const navLinks = document.querySelectorAll('.nav-links a');
-  const dots = document.querySelectorAll('.bottom-dot');
 
-  function showSection(id, el) {
-    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    navLinks.forEach(a => a.classList.remove('active'));
-    if (el) el.classList.add('active');
-    const idx = sections.indexOf(id);
-    dots.forEach((d,i) => d.classList.toggle('active', i === idx));
-    window.scrollTo(0,0);
-    triggerReveal();
+  // Smooth scroll to section on nav click
+  navLinks.forEach((link, i) => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.getElementById(sections[i]);
+      const offset = 64; // nav height
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+
+  // Highlight active nav link based on scroll position
+  function updateActiveNav() {
+    const offset = 80;
+    let current = sections[0];
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= offset) current = id;
+    });
+    navLinks.forEach((link, i) => {
+      link.classList.toggle('active', sections[i] === current);
+    });
   }
 
-  function showSectionByIndex(i) {
-    showSection(sections[i], navLinks[i]);
-  }
+  // Reveal on scroll using IntersectionObserver
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-  function triggerReveal() {
-    setTimeout(() => {
-      const active = document.querySelector('section.active');
-      active.querySelectorAll('.reveal').forEach((el, i) => {
-        setTimeout(() => el.classList.add('visible'), i * 55);
-      });
-    }, 80);
-  }
-  triggerReveal();
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  window.addEventListener('scroll', updateActiveNav, { passive: true });
+  updateActiveNav();
 </script>
 </body>
 </html>
