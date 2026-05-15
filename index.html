@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Comité Abril — Servicio al Cliente | Numaris</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --navy: #0f2a4a;
@@ -22,7 +22,7 @@
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--light); color: var(--navy); overflow-x: hidden; }
+  body { font-family: 'DM Sans', sans-serif; font-size: 16px; background: var(--light); color: var(--navy); overflow-x: hidden; }
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
@@ -30,11 +30,11 @@
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 40px; height: 64px;
   }
-  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--navy); letter-spacing: -0.5px; }
+  .nav-logo { font-family: 'Montserrat', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--navy); letter-spacing: -0.5px; }
   .nav-logo span { color: var(--blue); }
   .nav-links { display: flex; gap: 4px; list-style: none; }
   .nav-links a {
-    text-decoration: none; font-size: 0.82rem; font-weight: 500; color: var(--gray);
+    text-decoration: none; font-size: 0.88rem; font-weight: 500; color: var(--gray);
     padding: 6px 12px; border-radius: 20px; transition: all 0.25s; cursor: pointer;
   }
   .nav-links a:hover { color: var(--blue); background: rgba(26,95,168,0.08); }
@@ -45,18 +45,18 @@
   section { display: block; min-height: 100vh; padding: 100px 40px 80px; }
   .hero { background: linear-gradient(135deg, #e8f1fb 0%, #f5f8fc 60%, #eef6ff 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; }
   .hero::before { content: ''; position: absolute; top: -80px; right: -80px; width: 480px; height: 480px; background: radial-gradient(circle, rgba(79,163,209,0.15) 0%, transparent 70%); border-radius: 50%; }
-  .hero-badge { display: inline-block; background: rgba(26,95,168,0.1); color: var(--blue); font-size: 0.78rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 24px; }
-  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 700; line-height: 1.15; color: var(--navy); max-width: 700px; margin-bottom: 16px; }
+  .hero-badge { display: inline-block; background: rgba(26,95,168,0.1); color: var(--blue); font-size: 0.82rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 24px; }
+  .hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(2.6rem, 5vw, 4.2rem); font-weight: 800; line-height: 1.15; color: var(--navy); max-width: 700px; margin-bottom: 16px; }
   .hero h1 em { font-style: normal; color: var(--blue); }
-  .hero p { font-size: 1.05rem; color: var(--gray); max-width: 500px; line-height: 1.7; margin-bottom: 40px; }
+  .hero p { font-size: 1.1rem; color: var(--gray); max-width: 500px; line-height: 1.7; margin-bottom: 40px; }
   .hero-stats { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 2; }
   .stat-card { background: var(--white); border-radius: 16px; padding: 24px 28px; box-shadow: var(--card-shadow); text-align: center; border: 1px solid var(--border); min-width: 130px; transition: transform 0.2s; }
   .stat-card:hover { transform: translateY(-4px); }
-  .stat-num { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: var(--blue); line-height: 1; }
-  .stat-label { font-size: 0.75rem; color: var(--gray); font-weight: 500; margin-top: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .stat-num { font-family: 'Montserrat', sans-serif; font-size: 2.4rem; font-weight: 800; color: var(--blue); line-height: 1; }
+  .stat-label { font-size: 0.78rem; color: var(--gray); font-weight: 500; margin-top: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
   .section-header { margin-bottom: 36px; }
-  .section-tag { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--blue); margin-bottom: 8px; }
-  .section-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 700; color: var(--navy); }
+  .section-tag { font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--blue); margin-bottom: 8px; }
+  .section-header h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(2rem, 3vw, 2.6rem); font-weight: 800; color: var(--navy); }
   .impl-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; }
   .impl-card { background: var(--white); border-radius: 16px; padding: 22px; border: 1px solid var(--border); box-shadow: var(--card-shadow); transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
   .impl-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(15,42,74,0.12); }
@@ -65,11 +65,11 @@
   .impl-card.orange::before { background: var(--orange); }
   .impl-card.green::before { background: var(--green); }
   .impl-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; gap: 10px; }
-  .impl-name { font-weight: 600; font-size: 1rem; color: var(--navy); line-height: 1.3; }
-  .impl-units { background: var(--light); border-radius: 8px; padding: 4px 10px; font-size: 0.8rem; font-weight: 600; color: var(--blue); white-space: nowrap; flex-shrink: 0; }
-  .impl-type { display: inline-block; font-size: 0.72rem; font-weight: 500; background: rgba(26,95,168,0.08); color: var(--blue); padding: 3px 10px; border-radius: 12px; margin-bottom: 8px; }
-  .impl-note { font-size: 0.83rem; color: var(--gray); line-height: 1.6; margin-top: 8px; border-top: 1px solid var(--border); padding-top: 8px; }
-  .status-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 0.7rem; font-weight: 600; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px; }
+  .impl-name { font-weight: 600; font-size: 1.05rem; color: var(--navy); line-height: 1.3; }
+  .impl-units { background: var(--light); border-radius: 8px; padding: 4px 10px; font-size: 0.85rem; font-weight: 600; color: var(--blue); white-space: nowrap; flex-shrink: 0; }
+  .impl-type { display: inline-block; font-size: 0.76rem; font-weight: 500; background: rgba(26,95,168,0.08); color: var(--blue); padding: 3px 10px; border-radius: 12px; margin-bottom: 8px; }
+  .impl-note { font-size: 0.88rem; color: var(--gray); line-height: 1.6; margin-top: 8px; border-top: 1px solid var(--border); padding-top: 8px; }
+  .status-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 0.74rem; font-weight: 600; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px; }
   .status-pill::before { content: ''; width: 7px; height: 7px; border-radius: 50%; }
   .status-pill.arranque { background: #fff9e6; color: #b07d00; }
   .status-pill.arranque::before { background: #f5c842; }
@@ -80,40 +80,40 @@
   .step-label { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--gray); margin: 28px 0 12px; }
   .metrics-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 18px; margin-bottom: 32px; }
   .metric-box { background: var(--white); border-radius: 16px; padding: 24px; border: 1px solid var(--border); box-shadow: var(--card-shadow); text-align: center; }
-  .metric-val { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--blue); }
-  .metric-label { font-size: 0.78rem; color: var(--gray); margin-top: 4px; font-weight: 500; }
+  .metric-val { font-family: 'Montserrat', sans-serif; font-size: 2.2rem; font-weight: 800; color: var(--blue); }
+  .metric-label { font-size: 0.82rem; color: var(--gray); margin-top: 4px; font-weight: 500; }
   .highlight-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
   .highlight-card { background: var(--white); border-radius: 16px; padding: 26px; border: 1px solid var(--border); box-shadow: var(--card-shadow); }
   .highlight-icon { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 14px; }
-  .highlight-card h3 { font-size: 0.93rem; font-weight: 600; color: var(--navy); margin-bottom: 8px; line-height: 1.4; }
-  .highlight-card p { font-size: 0.83rem; color: var(--gray); line-height: 1.7; }
+  .highlight-card h3 { font-family: 'Montserrat', sans-serif; font-size: 0.97rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; line-height: 1.4; }
+  .highlight-card p { font-size: 0.88rem; color: var(--gray); line-height: 1.7; }
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } }
   .list-card { background: var(--white); border-radius: 16px; padding: 24px; border: 1px solid var(--border); box-shadow: var(--card-shadow); }
-  .list-card h3 { font-size: 0.88rem; font-weight: 600; color: var(--navy); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+  .list-card h3 { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
   .list-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
-  .list-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); margin-top: 6px; flex-shrink: 0; }
-  .list-item p { font-size: 0.86rem; color: #4a5568; line-height: 1.6; }
+  .list-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); margin-top: 7px; flex-shrink: 0; }
+  .list-item p { font-size: 0.9rem; color: #4a5568; line-height: 1.6; }
   .list-item strong { color: var(--navy); }
   .req-card { background: var(--white); border-radius: 16px; padding: 24px; border: 1px solid var(--border); box-shadow: var(--card-shadow); margin-bottom: 14px; display: flex; align-items: flex-start; gap: 18px; }
-  .req-status { flex-shrink: 0; background: var(--green); color: white; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 5px 12px; border-radius: 20px; margin-top: 4px; }
-  .req-info h3 { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
-  .req-info p { font-size: 0.83rem; color: var(--gray); line-height: 1.6; }
-  .req-client { font-size: 0.76rem; color: var(--blue); font-weight: 500; margin-top: 6px; }
-  .proposals-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
-  .proposal-card { background: var(--white); border-radius: 14px; padding: 20px; border: 1px solid var(--border); box-shadow: var(--card-shadow); transition: transform 0.2s; }
+  .req-status { flex-shrink: 0; background: var(--green); color: white; font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 5px 12px; border-radius: 20px; margin-top: 4px; }
+  .req-info h3 { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .req-info p { font-size: 0.88rem; color: var(--gray); line-height: 1.6; }
+  .req-client { font-size: 0.8rem; color: var(--blue); font-weight: 500; margin-top: 6px; }
+  .proposals-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 900px; margin: 0 auto; }
+  .proposal-card { background: var(--white); border-radius: 16px; padding: 30px; border: 1px solid var(--border); box-shadow: var(--card-shadow); transition: transform 0.2s; }
   .proposal-card:hover { transform: translateY(-3px); }
-  .proposal-badge { font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 3px 10px; border-radius: 12px; margin-bottom: 10px; display: inline-block; }
+  .proposal-badge { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 3px 10px; border-radius: 12px; margin-bottom: 12px; display: inline-block; }
   .badge-numaris { background: #e8f0fe; color: #1a5fa8; }
   .badge-chg { background: #f0fdf4; color: #166534; }
   .badge-growth { background: #fff7ed; color: #9a3412; }
-  .proposal-name { font-size: 0.97rem; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
-  .proposal-desc { font-size: 0.82rem; color: var(--gray); line-height: 1.5; }
+  .proposal-name { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+  .proposal-desc { font-size: 0.92rem; color: var(--gray); line-height: 1.65; }
   .comm-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; }
   .comm-card { background: var(--white); border-radius: 16px; padding: 24px; border: 1px solid var(--border); box-shadow: var(--card-shadow); text-align: center; }
   .comm-emoji { font-size: 2rem; margin-bottom: 12px; }
-  .comm-card h3 { font-size: 0.92rem; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
-  .comm-card p { font-size: 0.82rem; color: var(--gray); line-height: 1.6; }
+  .comm-card h3 { font-family: 'Montserrat', sans-serif; font-size: 0.96rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .comm-card p { font-size: 0.88rem; color: var(--gray); line-height: 1.6; }
   .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
   @media (max-width: 600px) {
@@ -132,6 +132,7 @@
     <li><a>Implementaciones</a></li>
     <li><a>Gestorías</a></li>
     <li><a>Experiencia</a></li>
+    <li><a>Requerimientos</a></li>
     <li><a>Crecimiento</a></li>
     <li><a>Comunicación</a></li>
   </ul>
@@ -184,9 +185,22 @@
   <div class="metrics-row">
     <div class="metric-box reveal"><div class="metric-val">106</div><div class="metric-label">Solicitudes en el mes</div></div>
     <div class="metric-box reveal"><div class="metric-val" style="color:var(--green)">$550,108</div><div class="metric-label">Facturación total MXN</div></div>
-    <div class="metric-box reveal"><div class="metric-val">3</div><div class="metric-label">Clientes con trámites</div></div>
+    <div class="metric-box reveal">
+      <div class="metric-val">3</div>
+      <div class="metric-label">Clientes con trámites</div>
+      <div style="margin-top:12px; border-top:1px solid var(--border); padding-top:12px; display:flex; flex-direction:column; gap:6px;">
+        <div style="display:flex;align-items:center;gap:8px;font-size:0.82rem;color:var(--navy);font-weight:600;">
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--blue);display:inline-block;flex-shrink:0"></span>CHG <span style="font-weight:400;color:var(--gray)">(Alsea y VW)</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:0.82rem;color:var(--navy);font-weight:600;">
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--blue);display:inline-block;flex-shrink:0"></span>Jugos del Valle
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:0.82rem;color:var(--navy);font-weight:600;">
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--blue);display:inline-block;flex-shrink:0"></span>URREA
+        </div>
+      </div>
+    </div>
   </div>
-  <div style="margin-bottom:20px;font-size:0.84rem;color:var(--gray)">Clientes: <strong style="color:var(--navy)">CHG (Alsea y VW) &nbsp;·&nbsp; Jugos del Valle &nbsp;·&nbsp; URREA</strong></div>
   <div class="highlight-cards">
     <div class="highlight-card reveal"><div class="highlight-icon" style="background:#fff9e6">🗓️</div><h3>Gestión extraordinaria de tenencias — Jugos del Valle</h3><p>Aunque el periodo regular concluyó en marzo, se atendió exitosamente una solicitud adicional coordinando con Finanzas para garantizar cumplimiento operativo en tiempo.</p></div>
     <div class="highlight-card reveal"><div class="highlight-icon" style="background:#eafaf3">🔄</div><h3>Renovación proactiva de tarjetas de circulación — URREA CDMX</h3><p>Se inició preventivamente la renovación antes de recibir solicitudes, anticipando vencimientos y reduciendo riesgos de incidencias en tránsito.</p></div>
@@ -225,19 +239,38 @@
       <div class="list-item"><div class="list-dot"></div><p>Tablero de seguimiento y análisis de facturación creado con <strong>Claude</strong></p></div>
     </div>
   </div>
-  <div style="margin-top:32px"><div class="section-tag">Requerimientos</div><div style="height:10px"></div>
-    <div class="req-card reveal"><div class="req-status">Entregado</div><div class="req-info"><h3>Reporte de Gastos Consolidados</h3><p>Visualización del gasto acumulado de la flota por conceptos: mantenimiento, combustible, gestorías y pólizas de seguro.</p><div class="req-client">Cliente: Grupo AMPM</div></div></div>
-    <div class="req-card reveal"><div class="req-status">Entregado</div><div class="req-info"><h3>Creación de usuarios por migración masiva</h3><p>Carga masiva de usuarios mediante migración para facilitar la configuración inicial del sistema, sin necesidad de creación manual uno por uno.</p><div class="req-client">Necesidad interna — implementaciones</div></div></div>
+</section>
+
+<section id="reqs">
+  <div class="section-header"><div class="section-tag">Desarrollo de producto</div><h2>Requerimientos Solicitados</h2></div>
+  <div class="req-card reveal">
+    <div class="req-status">Entregado</div>
+    <div class="req-info">
+      <h3>Reporte de Gastos Consolidados</h3>
+      <p>Reporte que permite al cliente visualizar el gasto acumulado de su flota por distintos conceptos: mantenimiento, combustible, gestorías y pólizas de seguro. Brinda visibilidad total del costo operativo vehicular en un solo lugar, facilitando la toma de decisiones financieras y el control presupuestal de la flota.</p>
+      <div class="req-client">Cliente solicitante: Grupo AMPM</div>
+    </div>
+  </div>
+  <div class="req-card reveal">
+    <div class="req-status">Entregado</div>
+    <div class="req-info">
+      <h3>Creación de usuarios por migración masiva</h3>
+      <p>Anteriormente, durante las implementaciones, los usuarios (principalmente administradores o modulares) debían crearse uno por uno de forma manual, lo que generaba tiempos de configuración elevados y riesgo de errores. La solución implementada permite una carga masiva de usuarios mediante migración, facilitando la configuración inicial del sistema y reduciendo significativamente el tiempo de onboarding de nuevos clientes.</p>
+      <div class="req-client">Necesidad interna — implementaciones</div>
+    </div>
   </div>
 </section>
 
 <section id="clientes">
   <div class="section-header"><div class="section-tag">Expansión</div><h2>Crecimiento con Clientes</h2></div>
-  <div class="proposals-grid">
-    <div class="proposal-card reveal"><div class="proposal-badge badge-growth">Crecemos con clientes</div><div class="proposal-name">Arrendadora AAG → PINFRA</div><div class="proposal-desc">Solicitud de propuesta del Plan Management para su cliente PINFRA.</div></div>
-    <div class="proposal-card reveal"><div class="proposal-badge badge-numaris">Clientes Numaris</div><div class="proposal-name">AMIFIN (Arrendadora)</div><div class="proposal-desc">Posible partner comercial. Propuesta en evaluación.</div></div>
-    <div class="proposal-card reveal"><div class="proposal-badge badge-chg">Clientes CHG</div><div class="proposal-name">IPS Digital</div><div class="proposal-desc">Propuesta: Gestión de mantenimientos + Póliza de gestorías.</div></div>
-    <div class="proposal-card reveal"><div class="proposal-badge badge-chg">Clientes CHG</div><div class="proposal-name">GENET</div><div class="proposal-desc">Propuesta: Gestión de mantenimientos + Póliza de gestorías.</div></div>
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="proposal-card reveal" style="padding:36px;">
+      <div class="proposal-badge badge-growth">Crecemos con nuestros clientes</div>
+      <div class="proposal-name">Arrendadora AAG → PINFRA</div>
+      <div class="proposal-desc" style="font-size:0.98rem;line-height:1.75;">
+        Arrendadora AAG solicitó una propuesta del <strong>Plan Management</strong> para su cliente <strong>PINFRA</strong>. Esta oportunidad representa la expansión del servicio hacia un nuevo usuario final a través de uno de nuestros clientes existentes, reforzando el modelo de crecimiento indirecto y la propuesta de valor integral de Numaris.
+      </div>
+    </div>
   </div>
 </section>
 
@@ -246,14 +279,14 @@
   <div class="comm-grid">
     <div class="comm-card reveal"><div class="comm-emoji">🪧</div><h3>Campaña de Gestorías</h3><p>Reemplacamientos en Tabasco. Comunicación activa con clientes en la región.</p></div>
     <div class="comm-card reveal"><div class="comm-emoji">✉️</div><h3>Nuevas Funcionalidades</h3><p>Mail informativo de nuevas funcionalidades del último mes. Aviso sobre intermitencia del sistema por despliegue de roles y permisos.</p></div>
-    <div class="comm-card reveal"><div class="comm-emoji">🗓️</div><h3>Avisos de Servicio</h3><p>Aviso de día no laboral: <strong>1 de mayo</strong>. Gestión anticipada de expectativas.</p></div>
+    <div class="comm-card reveal"><div class="comm-emoji">🗓️</div><h3>Avisos de Servicio</h3><p>Día no laboral: <strong>1 de mayo.</strong> Comunicado a los clientes sobre la modificación de nuestra ventana de servicio.</p></div>
     <div class="comm-card reveal"><div class="comm-emoji">⭐</div><h3>Campaña NPS — Gestión de Flotas</h3><p>Mail a contactos principales. Historias y recordatorios mediante WhatsApp para aumentar tasa de respuesta.</p></div>
   </div>
 </section>
 
 
 <script>
-  const sections = ['home','impl','gestion','experiencia','clientes','comms'];
+  const sections = ['home','impl','gestion','experiencia','reqs','clientes','comms'];
   const navLinks = document.querySelectorAll('.nav-links a');
 
   // Smooth scroll to section on nav click
